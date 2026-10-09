@@ -15,19 +15,18 @@
        
     
 
-    <!--Boton version celular-->
-    <button class="navbar-toggler" type="button" data-bs-toggler="collapse" datsa-bs-target="#miMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+          <!--Boton version celular-->
+          <button class="navbar-toggler" type="button" data-bs-toggler="collapse" datsa-bs-target="#miMenu">
+          <span class="navbar-toggler-icon"></span>
+           </button>
 
-    <div class="collapse navbar-collapse" id="miMenu">
-        <ul class="navbar-nav">
-            <!-- cambiar href si los archivos se llaman distinto-->
-             <li class="nav-item"><a class="nav-link" href="index.html">Usuarios</a></li>
-             <li class="nav-item"><a class="nav-link" href="cuentas.html">Cuentas</a></li>
-             <li class="nav-item"><a class="nav-link" href="movimientos.html">Movimientos</a></li>
-        </ul>
-        
+         <div class="collapse navbar-collapse" id="miMenu">
+               <ul class="navbar-nav">
+                  <!-- cambiar href si los archivos se llaman distinto-->
+                  <li class="nav-item"><a class="nav-link" href="index.html">Usuarios</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cuentas.html">Cuentas</a></li>
+                  <li class="nav-item"><a class="nav-link" href="movimientos.html">Movimientos</a></li>
+              </ul>
          </div>
     </div>
 </nav>
@@ -37,11 +36,68 @@
     <h2>Listado de Usuarios</h2>
     
     <!--boton que abre el modal-->
-    <button class="btn btn-primary mb-3" data-bs-toggler="modal" data-bs-target="#modalUsuarios">
+    <button class="btn btn-primary mb-3" data-bs-toggler="modal" data-bs-target="modalUsuarios">
         Nuevo Usuario
     </button>
 
-    
+    <table class="table table-bordered table-striped"> 
+        <thead class="table-dark">
+            <tr>
+                <th> Nombre</th>
+                <th> Correo</th>
+                <th> FechaRegistro</th>
+                <th> Acciones</th>
+            </tr>
+    </thead>
+    <tbody id="tablaBodyUsuarios">
+        <!--El controller js llenara esto-->
+    </tbody>
+</table>
+
 </div>
+
+<!--Ventana del formulario-->
+<div class="modal-fade" id="modalUsuarios" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+             <div class="modal-header">
+                    <h5 class="modal-title">Registra Usuario</h5>
+                    <button type="button" class="btn-clase" data-bs-dismiss="modal"></button>
+             </div>
+            
+                <div class="modal-body">
+                    <form id="formUsuarios">
+                        <input type="hidden" id="idUsuarios">
+
+                        <!--Plantilla de input normal-->
+                        <div class="mb-3">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" id="inputUsuarios" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Correo</label>
+                            <input type="text" class="form-control" id="inputCorreoUsuarios" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Fecha de registro</label>
+                            <input type="datetime-local" class="form-control" id="inputFechaRegistroUsuarios" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100"> Guardar</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+
+<!--Scripts bootstrap y controller-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.hundle.min.js"></script>
+
+<!--Ojo a la ruta type="Module"-->
+<script type="module" src="js/controllers/usuariosController.js"></script>
 </body>
 </html>
