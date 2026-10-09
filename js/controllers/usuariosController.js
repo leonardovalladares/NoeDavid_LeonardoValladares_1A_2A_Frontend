@@ -46,6 +46,7 @@ function asignarEventosBotones(){
     )
 }
 
+//Access to script at 'file:///C:/xampp/htdocs/NoeDavid_LeonardoValladares_1A_2A_Frontend/js/controllers/usuariosController.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome-experimental-site-token-provider, chrome-extension, chrome-untrusted, data, edge, http, https, isolated-app.
 
 
-
+// file:///C:/xampp/htdocs/NoeDavid_LeonardoValladares_1A_2A_Frontend/js/controllers/usuariosController.js net::ERR_FAILED
