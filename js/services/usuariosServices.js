@@ -1,61 +1,73 @@
-//aca va la url de la api usuarios
-const API_URL = "http://localhost:8080/api/usuarios"
+const API_URL = "http://localhost:8080/api/usuarios";
 
 export const usuariosService = {
 
-    //1. GET - OBTENER LOS REGISTROS
-    async obtenerTodos(){
+    async obtenerTodos() {
         const respuesta = await fetch(API_URL);
+        const resultado = await respuesta.json();
 
-        if(!respuesta.ok){
-            throw new Error('Error al obtener datos del servidor')
+        if (!respuesta.ok) {
+            throw new Error(resultado.message || 'Error al obtener los usuarios');
         }
 
-        return await respuesta.json();
+        return resultado;
     },
 
-    //2. POST - CREAR NUEVO REGISTRO
-    async crearUsuario(datos){
+    async obtenerPorId(id) {
+        const respuesta = await fetch(`${API_URL}/${id}`);
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(resultado.message || 'Error al obtener el usuario');
+        }
+
+        return resultado;
+    },
+
+    async crearUsuario(datos) {
         const respuesta = await fetch(API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(datos) //CONVIERTE EL OBJETO A TEXTO JSON
+            body: JSON.stringify(datos)
         });
+        const resultado = await respuesta.json();
 
-        if(!respuesta.ok){
-            throw new Error('Error al crear un usuario')
+        if (!respuesta.ok) {
+            throw new Error(resultado.message || 'Error al crear el usuario');
         }
-        return await respuesta.json();
+
+        return resultado;
     },
 
-    //3. PUT - ACTUALIZAR REGISTRO EXISTENTE
-
-    async actualizarUsuario(id, datos){
-        const respuesta = await fetch (`${API_URL}/${id}`, {
+    async actualizarUsuario(id, datos) {
+        const respuesta = await fetch(`${API_URL}/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(datos)
         });
-        if(!respuesta.ok){
-            throw new Error('Error al actualizar el usuario');
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(resultado.message || 'Error al actualizar el usuario');
         }
-        return await respuesta.json();
+
+        return resultado;
     },
 
-    //4. DELETE - Eliminar Usuarios
-
-    async eliminarUsuario(id){
+    async eliminarUsuario(id) {
         const respuesta = await fetch(`${API_URL}/${id}`, {
             method: 'DELETE'
         });
-        if(!respuesta.ok){
-            throw new Error('Error al eliminar el usuario');
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(resultado.message || 'Error al eliminar el usuario');
         }
-        //el delete no devuelve json
-        return true;
+
+        return resultado;
     }
 };

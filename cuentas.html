@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Gestion de Usuarios</title>
+    <title>Gestion de Cuentas</title>
 </head>
 <body>
 
@@ -26,52 +26,71 @@
     </nav>
 
     <div class="container mt-4">
-        <h2>Listado de Usuarios</h2>
+        <h2>Listado de Cuentas</h2>
 
         <div id="alerta"></div>
 
-        <button class="btn btn-primary mb-3" id="btnNuevoUsuario" data-bs-toggle="modal" data-bs-target="#modalUsuarios">
-            Nuevo Usuario
+        <div class="mb-3">
+            <label>Usuario</label>
+            <select class="form-control" id="selectUsuarioCuentas"></select>
+        </div>
+
+        <button class="btn btn-primary mb-3" id="btnNuevaCuenta" data-bs-toggle="modal" data-bs-target="#modalCuentas">
+            Nueva Cuenta
         </button>
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
                     <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>FechaRegistro</th>
+                    <th>Tipo</th>
+                    <th>Saldo Inicial</th>
+                    <th>Saldo Actual</th>
+                    <th>Activa</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="tablaBodyUsuarios">
+            <tbody id="tablaBodyCuentas">
             </tbody>
         </table>
     </div>
 
-    <div class="modal fade" id="modalUsuarios" tabindex="-1">
+    <div class="modal fade" id="modalCuentas" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Registra Usuario</h5>
+                    <h5 class="modal-title">Registra Cuenta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formUsuarios">
-                        <input type="hidden" id="idUsuarios">
+                    <form id="formCuentas">
+                        <input type="hidden" id="idCuenta">
 
                         <div class="mb-3">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" id="inputUsuarios" required>
+                            <input type="text" class="form-control" id="inputNombreCuenta" required>
                         </div>
 
                         <div class="mb-3">
-                            <label>Correo</label>
-                            <input type="email" class="form-control" id="inputCorreoUsuarios" required>
+                            <label>Tipo</label>
+                            <select class="form-control" id="selectTipoCuenta" required>
+                                <option value="EFECTIVO">EFECTIVO</option>
+                                <option value="BANCO">BANCO</option>
+                                <option value="TARJETA">TARJETA</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
-                            <label>Fecha de registro</label>
-                            <input type="date" class="form-control" id="inputFechaRegistroUsuarios" required>
+                            <label>Saldo Inicial</label>
+                            <input type="number" step="0.01" class="form-control" id="inputSaldoInicialCuenta" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Activa</label>
+                            <select class="form-control" id="selectActivaCuenta" required>
+                                <option value="S">S</option>
+                                <option value="N">N</option>
+                            </select>
                         </div>
 
                         <button type="submit" class="btn btn-success w-100">Guardar</button>
@@ -82,6 +101,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="js/controllers/usuariosController.js"></script>
+    <script type="module" src="js/controllers/cuentasController.js"></script>
 </body>
 </html>

@@ -3,16 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Gestion de Movimientos</title>
 </head>
 <body>
-    
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Menumenusito</a>
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#miMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="miMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="clientes.html">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cuentas.html">Cuentas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Movimientos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <h2>Listado de Movimientos</h2>
 
+        <div id="alerta"></div>
 
+        <div class="mb-3">
+            <label>Usuario</label>
+            <select class="form-control" id="selectUsuarioMovimientos"></select>
+        </div>
 
+        <div class="mb-3">
+            <label>Cuenta</label>
+            <select class="form-control" id="selectCuentaMovimientos"></select>
+        </div>
+
+        <p id="textoResumen">Ingresos: $0.00 | Gastos: $0.00 | Saldo Actual: $0.00</p>
+
+        <div class="mb-3">
+            <label>Filtrar por Tipo</label>
+            <select class="form-control" id="filtroTipo">
+                <option value="">Todos</option>
+                <option value="INGRESO">INGRESO</option>
+                <option value="GASTO">GASTO</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary mb-3" id="btnNuevoMovimiento" data-bs-toggle="modal" data-bs-target="#modalMovimientos">
+            Nuevo Movimiento
+        </button>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Descripcion</th>
+                    <th>Monto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBodyMovimientos">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="modalMovimientos" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registra Movimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formMovimientos">
+                        <input type="hidden" id="idMovimiento">
+
+                        <div class="mb-3">
+                            <label>Tipo</label>
+                            <select class="form-control" id="selectTipoMovimiento" required>
+                                <option value="INGRESO">INGRESO</option>
+                                <option value="GASTO">GASTO</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Categoria</label>
+                            <input type="text" class="form-control" id="inputCategoriaMovimiento" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Descripcion</label>
+                            <input type="text" class="form-control" id="inputDescripcionMovimiento">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Monto</label>
+                            <input type="number" step="0.01" class="form-control" id="inputMontoMovimiento" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Fecha</label>
+                            <input type="date" class="form-control" id="inputFechaMovimiento" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/controllers/movimientosController.js"></script>
 </body>
 </html>
