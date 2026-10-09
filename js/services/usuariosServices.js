@@ -1,5 +1,5 @@
 //aca va la url de la api usuarios
-const API_URL = ''
+const API_URL = "http://localhost:8080/api/usuarios"
 
 export const usuariosService = {
 

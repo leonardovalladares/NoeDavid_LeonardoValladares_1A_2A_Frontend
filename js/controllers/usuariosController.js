@@ -1,5 +1,5 @@
 //importar service 
-import { usuariosService } from "../services/usuariosServices";
+import { usuariosService } from "../services/usuariosServices.js";
 
 //conectar js con html
 const tablaBody = document.getElementById('tablaBodyUsuarios');
